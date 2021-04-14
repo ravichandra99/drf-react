@@ -15,15 +15,18 @@ function AuthenticatedPing() {
    * if they aren't logged in.
   **/
   const redirectUnauthenticatedUser = () => {
+
     if (!isUserLoggedIn()) {
       history.push('/login?next=/ping');
     }
+    
   }
 
   /**
    * calls redirectUnauthenticatedUser on mount and user changes.
   **/
   // eslint-disable-next-line no-sparse-arrays
+    // eslint-disable-next-line
   useEffect(redirectUnauthenticatedUser, [,user])
 
 

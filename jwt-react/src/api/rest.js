@@ -1,8 +1,8 @@
 import { authRequest } from './auth.js'
 
 const ping = () => {
-  const extraParameters = {params: {"id": "PONG" }}
-  return authRequest.get('/api/ping/',extraParameters)
+  
+  return authRequest.get('/api/get_courses/')
     .then(response=>{
       return Promise.resolve(response.data)
     }).catch((error)=> {

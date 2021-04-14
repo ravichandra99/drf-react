@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // this base url will be change based on
 // if you need to point to production.
-const BASE_URL = "http://localhost:8000"
+const BASE_URL = "https://aqueous-savannah-67376.herokuapp.com"
 const ACCESS_TOKEN = 'access_token'
 const REFRESH_TOKEN = 'refresh_token'
 
@@ -18,7 +18,7 @@ let tokenRequest = axios.create({
 const loginUser = (username, password) => {
   const loginBody = {username: username, password: password}
 
-  return tokenRequest.post(`/api/token/both/`, loginBody)
+  return tokenRequest.post(`api/token/`, loginBody)
     .then((response)=> {
       window.localStorage.setItem(ACCESS_TOKEN, response.data.access);
       window.localStorage.setItem(REFRESH_TOKEN, response.data.refresh);
@@ -30,7 +30,7 @@ const loginUser = (username, password) => {
 
 const refreshToken = () => {
   const refreshBody = {"refresh": window.localStorage.getItem(REFRESH_TOKEN)}
-  return tokenRequest.post(`/api/token/access/`, refreshBody)
+  return tokenRequest.post(`/api/token/refresh/`, refreshBody)
     .then((response)=> {
       window.localStorage.setItem(ACCESS_TOKEN, response.data.access);
       return Promise.resolve(response.data);
