@@ -28,21 +28,21 @@ function AuthenticatedPingTest() {
       .then((data) => {
        
         setData(data);
-        console.log("trying aaaaa",data);
+        console.log(data);
       })
       .catch((e) => {
         
         console.log('fetch failed');
       });
   }, []);
-
-  for (var i = dummy.length - 1; i >= 0; i--) {
-    console.log(dummy[i])
-  }
-
-  return(<div>{dummy.map((elem) => elem.name)}</div>);
-
   
-}
+return(
+    <div>
+      {
+        dummy.map((elem) => <p>{elem.name}</p>)
+      }
+    </div>
+  );
 
+}
 export default AuthenticatedPingTest;
